@@ -10,7 +10,7 @@ class TestBasket:
         driver.get(link)
         try:
             basket_button = WebDriverWait(driver, 10).until(
-                EC.visibility_of_element_located((By.XPATH, '//button[@class="btn btn-lg btn-primary btn-add-to-baske"]'))
+                EC.visibility_of_element_located((By.XPATH, '//button[@class="btn btn-lg btn-primary btn-add-to-basket"]'))
             )
         except TimeoutException:
             print("Can't find 'Add to basket' button")

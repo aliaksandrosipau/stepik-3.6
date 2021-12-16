@@ -4,7 +4,7 @@ from selenium.webdriver.chrome.options import Options
 
 def pytest_addoption(parser):
     parser.addoption(
-        "--browser_name",
+        "--browser",
         action="store",
         default=None,
         help="Choose browser: chrome or firefox",
@@ -18,7 +18,7 @@ def pytest_addoption(parser):
 
 @pytest.fixture(scope="function")
 def driver(request):
-    browser_name = request.config.getoption("browser_name")
+    browser_name = request.config.getoption("browser")
     user_language = request.config.getoption("language")
     if browser_name == "chrome":
         print("\nstart chrome browser for test..")
