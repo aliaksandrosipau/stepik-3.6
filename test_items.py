@@ -1,17 +1,14 @@
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.common.exceptions import TimeoutException
+import time
 
 class TestBasket:
 
-    def test_find_basket_button(self, driver):
+    def test_find_basket_button(self, browser):
         link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
-        driver.get(link)
+        browser.get(link)
+        # time.sleep(30)
         try:
-            basket_button = WebDriverWait(driver, 10).until(
-                EC.visibility_of_element_located((By.XPATH, '//button[@class="btn btn-lg btn-primary btn-add-to-basket"]'))
-            )
-        except TimeoutException:
-            print("Can't find 'Add to basket' button")
-
+            browser.find_element_by_xpath('//button[@class="btn btn-lg btn-primary btn-add-to-basket"]')
+            result = True
+        except:
+            result = False
+        assert result == True, "Can't find 'Add to basket' button"
